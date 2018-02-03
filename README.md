@@ -1,9 +1,12 @@
-# Indecision
+# expensify
 
-A web-app to help make those tricky decision, and to learn React
+- React app to list upcoming expeses. 
+- Play with Auth set up. 
+- Deployment experimentation. 
 
-## Local Development
-The app uses webpack devServer, to run locally: 
+### How to run: 
+- Built with a custom webpack boilerplate/react-router. To get started:
+
 ```bash
     yarn run dev-server
-```# expensify
+```
