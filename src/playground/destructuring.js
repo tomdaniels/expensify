@@ -3,14 +3,34 @@ const person = {
     age: 26,
     location: {
         city: 'philadelphia',
-        temp: 92
+        temp: 98
     }
 };
 
-const {name, age} = person;
+// Assigning default values while destructuring.
+
+const {name = 'Anonymous', age} = person;
 
 console.log(`${name} is ${age}.`);
 
-const {city, temp} = person.location;
+// Rename constant variable names while destructuring.
 
-console.log(`It's ${temp} in ${city}`);
+const {city, temp: temperature} = person.location;
+if (temperature && city) {
+    console.log(`It's ${temperature} in ${city}`);
+}
+
+// challenge. With the below book object, make console.log(publisherName); print:
+// Penguin or, "Self Published" if no name property.
+
+const book = {
+    title: 'Ego is the Enemy',
+    author: 'Ryan Holiday',
+    publisher: {
+        name: 'Penguin'
+    }
+};
+
+const {name: publisherName = 'Self Published'} = book.publisher;
+
+console.log(publisherName);
