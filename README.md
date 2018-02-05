@@ -5,7 +5,9 @@
 - Deployment experimentation. 
 
 ### How to run: 
-- Built with a custom webpack boilerplate/react-router. To get started:
+- Built with a custom webpack boilerplat. React-router for client side rendering, and Redux for state management 
+
+To get it started:
 
 ```bash
     yarn run dev-server
