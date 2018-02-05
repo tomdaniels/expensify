@@ -1,3 +1,5 @@
+// Object destructuring
+
 const person = {
     name: 'Andrew',
     age: 26,
@@ -17,7 +19,7 @@ console.log(`${name} is ${age}.`);
 
 const {city, temp: temperature} = person.location;
 if (temperature && city) {
-    console.log(`It's ${temperature} in ${city}`);
+   // console.log(`It's ${temperature} in ${city}`);
 }
 
 // challenge. With the below book object, make console.log(publisherName); print:
@@ -33,4 +35,27 @@ const book = {
 
 const {name: publisherName = 'Self Published'} = book.publisher;
 
-console.log(publisherName);
+// console.log(publisherName);
+
+
+// Array destructuring
+
+
+// Array destructuring
+
+const address = [
+    '1299 S Juniper Street', 'Philadelphia', 'Pennsylvania', '19147'
+];
+
+const [, yourCity, state] = address;
+
+console.log(`You are in ${yourCity}, ${state}`);
+
+// challenge. with the item array, make console.log() that prints:
+// A medium coffee costs 2.50
+
+const item = ['coffee', '$2', '$2.50', '$2.75'];
+
+const [coffee, , medium,] = item;
+
+console.log(`a medium ${coffee} costs ${medium}`);
