@@ -1,7 +1,7 @@
 import { createStore, combineReducers } from 'redux';
 import uuid from 'uuid';
 
-// add expense
+// ADD_EXPENSE
 const addExpense = (
     {
         description = '',
@@ -20,26 +20,38 @@ const addExpense = (
     }
 });
 
-// remove expense
-// edit expense
-// set text filter
-// sort by date
-// sort by amount
-// set start date
-// set end date
+// REMOVE_EXPENSE
+const removeExpense = ({ id } = {}) => ({
+    type: 'REMOVE_EXPENSE',
+    id
+});
 
-// expenses reducer
+// EDIT_EXPENSE
+// SET_TEXT_FILTER
+// SORT_BY_DATE
+// SORT_BY_AMOUNT
+// SET_START_DATE
+// SET_END_DATE
+
+// Expenses Reducer
 
 const expensesReducerDefaultState = [];
 
 const expensesReducer = (state = expensesReducerDefaultState, action) => {
     switch (action.type) {
         case 'ADD_EXPENSE':
-            return state.concat(action.expense);
+            return [
+                ...state,
+                action.expense
+            ];
+        case 'REMOVE_EXPENSE':
+            return state.filter(({ id }) => id !== action.id);
         default:
             return state;
     }
 };
+
+// Filters Reducer
 
 const filtersReducerDefaultState = {
     text: '',
@@ -51,9 +63,11 @@ const filtersReducerDefaultState = {
 const filtersReducer = (state = filtersReducerDefaultState, action) => {
     switch (action.type) {
         default:
-            return state
+            return state;
     }
 };
+
+// Store creation
 
 const store = createStore(
     combineReducers({
@@ -66,14 +80,14 @@ store.subscribe(() => {
     console.log(store.getState());
 });
 
-store.dispatch(addExpense({
-    description: 'Rent',
-    amount: 100
-}));
+const expenseOne = store.dispatch(addExpense({ description: 'Rent', amount: 100 }));
+const expenseTwo = store.dispatch(addExpense({ description: 'Coffee', amount: 300 }));
+
+store.dispatch(removeExpense({ id: expenseOne.expense.id }));
 
 const demoState = {
     expenses: [{
-        id: 'ghhfv',
+        id: 'poijasdfhwer',
         description: 'January Rent',
         note: 'This was the final payment for that address',
         amount: 54500,
@@ -86,5 +100,3 @@ const demoState = {
         endDate: undefined
     }
 };
-
-
