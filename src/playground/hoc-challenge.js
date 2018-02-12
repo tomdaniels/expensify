@@ -15,11 +15,11 @@ const requireAuthentication = (WrappedComponent) => {
     return (props) => (
       <div>
           {
-              props.isAuthenticated ? 'You are logged in' : 'You must login to begin'
-          }
-          {
-              props.isAuthenticated &&
-              <WrappedComponent {...props} />
+              props.isAuthenticated ? (
+                  <WrappedComponent {...props} />
+              ) : (
+                  <div>Please login to view the info</div>
+              )
           }
       </div>
     );
@@ -27,4 +27,4 @@ const requireAuthentication = (WrappedComponent) => {
 
 const AuthInfo = requireAuthentication(Info);
 
-ReactDOM.render(<AuthInfo isAuthenticated={true} info="Welcome to the login screen" />, document.getElementById('app'));
+ReactDOM.render(<AuthInfo isAuthenticated info="Welcome to the login screen" />, document.getElementById('app'));
