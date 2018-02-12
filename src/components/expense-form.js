@@ -10,7 +10,8 @@ class ExpenseForm extends React.Component {
         note: '',
         amount: '',
         createdAt: moment(),
-        calendarFocused: false
+        calendarFocused: false,
+        errorState: ''
     };
     onDescriptionChange = (e) => {
       const description = e.target.value;
@@ -50,10 +51,29 @@ class ExpenseForm extends React.Component {
         }));
     };
 
+    onSubmit = (event) => {
+        event.preventDefault();
+
+        if (!this.state.description || !this.state.amount) {
+            this.setState(() => ({
+                errorState: 'Please provide description and amount.'
+            }));
+        } else {
+            this.setState(() => ({
+                errorState: ''
+            }));
+            console.log('submit');
+        }
+    };
+
     render() {
         return (
           <div>
-              <form>
+              {
+                  this.state.errorState &&
+                      <p>{this.state.errorState}</p>
+              }
+              <form onSubmit={this.onSubmit}>
                   <input
                       type="text"
                       placeholder="Description"
