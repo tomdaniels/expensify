@@ -46,9 +46,10 @@ test('should set up text filter action object as empty string with no data', () 
 });
 
 test('should set up text filter action object as empty string with supplied text', () => {
-    const action = setTextFilter('rent');
+    const text = 'some value'
+    const action = setTextFilter(text);
     expect(action).toEqual({
         type: 'SET_TEXT_FILTER',
-        text: 'rent'
+        text
     });
 });
