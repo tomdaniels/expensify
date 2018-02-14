@@ -25,16 +25,12 @@ test('should generate set end date action object', () => {
 
 test('should generate sort by amount action object', () => {
    const action = sortByAmount();
-   expect(action).toEqual({
-       type: 'SORT_BY_AMOUNT'
-   });
+   expect(action).toEqual({ type: 'SORT_BY_AMOUNT' });
 });
 
 test('should generate sort by date action object', () => {
     const action = sortByDate();
-    expect(action).toEqual({
-        type: 'SORT_BY_DATE'
-    });
+    expect(action).toEqual({ type: 'SORT_BY_DATE' });
 });
 
 test('should set up text filter action object as empty string with no data', () => {
@@ -46,7 +42,7 @@ test('should set up text filter action object as empty string with no data', () 
 });
 
 test('should set up text filter action object as empty string with supplied text', () => {
-    const text = 'some value'
+    const text = 'some value';
     const action = setTextFilter(text);
     expect(action).toEqual({
         type: 'SET_TEXT_FILTER',
