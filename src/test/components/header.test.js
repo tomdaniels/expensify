@@ -1,5 +1,5 @@
 import React from 'react';
-import ReactShallowRenderer from 'react-test-renderer';
+import ReactShallowRenderer from 'react-test-renderer/shallow';
 import Header from '../../components/header';
 
 test('should renderer header', () => {
