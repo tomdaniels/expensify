@@ -56,5 +56,5 @@ test('should not set amount if invalid input', () => {
     wrapper.find('input').at(1).simulate('change', {
         target: { value }
     });
-    expect(wrapper.state('amount').length).toBe(0);
+    expect(wrapper.state('amount')).toBe('');
 });
