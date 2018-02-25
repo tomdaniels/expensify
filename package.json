@@ -24,6 +24,7 @@
     "enzyme": "3.3.0",
     "enzyme-adapter-react-16": "1.1.1",
     "enzyme-to-json": "3.0.1",
+    "identity-obj-proxy": "^3.0.0",
     "jest": "22.4.0",
     "live-server": "^1.2.0",
     "moment": "^2.20.1",
