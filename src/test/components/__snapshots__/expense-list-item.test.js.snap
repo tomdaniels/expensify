@@ -9,9 +9,9 @@ exports[`should render expenses data 1`] = `
     gum
   </Link>
   <p>
-    195
-     - 
-    0
+    $1.95
+    -
+    1st January, 1970
   </p>
 </div>
 `;
