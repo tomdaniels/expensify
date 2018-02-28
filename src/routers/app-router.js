@@ -3,7 +3,6 @@ import { BrowserRouter, Route, Switch } from 'react-router-dom'
 import ExpenseDashboardPage from '../components/dashboard';
 import AddExpensePage from '../components/add-expense';
 import EditExpensePage from '../components/edit-expense'
-import HelpPage from '../components/help-page';
 import NotFoundPage from '../components/error-page';
 import Header from '../components/header';
 
@@ -24,10 +23,6 @@ const AppRouter = () => (
                 <Route
                     path="/edit/:id"
                     component={EditExpensePage}
-                />
-                <Route
-                    path="/help"
-                    component={HelpPage}
                 />
                 <Route
                     component={NotFoundPage}
