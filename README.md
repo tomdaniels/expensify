@@ -9,7 +9,7 @@
 - Jest/Enzyme testing
 - Heroku deployment
 
-###Get started
+### Get started
 
 ```bash
     git clone git@github.com:tomdaniels/expensify.git
