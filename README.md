@@ -1,14 +1,19 @@
 # expensify
 
-- React app to list upcoming expeses. 
-- Play with Auth set up. 
-- Deployment experimentation. 
+- Application to list, view and search upcoming expenses.
 
-### How to run: 
-- Built with a custom webpack boilerplat. React-router for client side rendering, and Redux for state management 
+## Stack
+- React components
+- Webpack and Babel
+- Redux and React Router
+- Jest/Enzyme testing
+- Heroku deployment
 
-To get it started:
+###Get started
 
 ```bash
-    yarn run dev-server
+    git clone git@github.com:tomdaniels/expensify.git
+    cd expensify
+    yarn install
+    yarn dev-server
 ```
