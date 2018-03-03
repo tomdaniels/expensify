@@ -13,6 +13,23 @@ firebase.initializeApp(config);
 
 const database = firebase.database();
 
+database.ref().on('value', (snapshot) => {
+    let value = snapshot.val();
+    console.log(`${value.name} is a ${value.job.title} at ${value.job.company}`);
+}, (error) => {
+    console.log('error:', error);
+});
+
+
+database.ref('location/city')
+    .once('value')
+    .then((snapshot) => {
+    const val = snapshot.val();
+    console.log(val);
+    }).catch((error) => {
+    console.log('error', error)
+});
+
 firebase.database().ref().set({
     name: 'Tom Daniels',
     age: 22,
@@ -37,7 +54,7 @@ database.ref().update({
     'job/company': 'Amazon',
     'location/city': 'Seattle'
 }).then(() => {
-    consol.log('something')
+    console.log('something')
 }).catch((error) => {
     console.log('error', error);
 });
