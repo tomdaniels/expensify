@@ -1,0 +1,12 @@
+.list-header {
+  background: $light-grey;
+  border: 1px solid darken($light-grey, 7);
+  color: $text-grey;
+  display: flex;
+  justify-content: space-between;
+  padding: $size-s $size-med;
+}
+
+.list-item {
+  
+}
