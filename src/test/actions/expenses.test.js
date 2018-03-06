@@ -41,22 +41,38 @@ test('should add expense to database and store', (done) => {
 });
 
 test('should add expense with defaults to database and store', () => {
-
+    const addAction = addExpense(expenses[2]);
+    expect(addAction).toEqual({
+        type: 'ADD_EXPENSE',
+        expense: expenses[2]
+    });
 });
 
-// test('should set up the add expense object with default values', () => {
-//     const addAction = addExpense();
-//     expect(addAction).toEqual({
-//         type: 'ADD_EXPENSE',
-//         expense: {
-//             description: '',
-//             note: '',
-//             amount: 0,
-//             createdAt: 0,
-//             id: expect.any(String)
-//         }
-//     })
-// });
+test('should add expense to database and store', (done) => {
+    const store = createMockStore({});
+    const defaultData = {
+        description: '',
+        note: '',
+        amount: 0,
+        createdAt: 0
+    };
+
+    store.dispatch(startAddExpense({})).then(() => {
+        const actions = store.getActions();
+        expect(actions[0]).toEqual({
+            type: 'ADD_EXPENSE',
+            expense: {
+                id: expect.any(String),
+                ...defaultData
+            }
+        });
+
+        return database.ref(`expenses/${actions[0].expense.id}`).once('value');
+    }).then((snapshot) => {
+        expect(snapshot.val()).toEqual(defaultData);
+        done();
+    });
+});
 
 
 test('should set up edit expense action object', () => {
