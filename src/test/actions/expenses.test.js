@@ -1,5 +1,9 @@
-import { addExpense, editExpense, removeExpense } from '../../actions/expenses';
+import configureMockStore from 'redux-mock-store';
+import thunk from 'redux-thunk';
+import {addExpense, editExpense, removeExpense, startAddExpense } from '../../actions/expenses';
 import expenses from '../fixtures/expenses';
+
+const createMockStore = configureMockStore([thunk]);
 
 test('should set up the add expense object with provided values', () => {
     const addAction = addExpense(expenses[2]);
@@ -9,8 +13,19 @@ test('should set up the add expense object with provided values', () => {
     });
 });
 
-test('should add expense to database and store', () => {
-    
+test('should add expense to database and store', (done) => {
+    const store = createMockStore({});
+    const expenseData = {
+        description: 'mouse',
+        amount: 3000,
+        note: 'this one is better',
+        createdAt: 1000
+    };
+
+    store.dispatch(startAddExpense(expenseData)).then(() => {
+       expect(1).toBe(1);
+       done();
+    });
 });
 
 test('should add expense with defaults to database and store', () => {
