@@ -2,10 +2,12 @@
   display: flex;
   flex-direction: column;
   margin-bottom: $size-med;
+  padding: 15px;
 
   @media (min-width: $breakpoint) {
     flex-direction: row;
     margin-bottom: $size-lar;
+    padding: 0;
   }
 }
 
