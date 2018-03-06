@@ -1,35 +1,35 @@
 import { addExpense, editExpense, removeExpense } from '../../actions/expenses';
+import expenses from '../fixtures/expenses';
 
 test('should set up the add expense object with provided values', () => {
-    const expenseData = {
-        description: 'Rent',
-        amount: 109500,
-        createdAt: 1000,
-        note: 'this was last month'
-    };
-    const addAction = addExpense(expenseData);
+    const addAction = addExpense(expenses[2]);
     expect(addAction).toEqual({
         type: 'ADD_EXPENSE',
-        expense: {
-            ...expenseData,
-            id: expect.any(String)
-        }
+        expense: expenses[2]
     });
 });
 
-test('should set up the add expense object with default values', () => {
-    const addAction = addExpense();
-    expect(addAction).toEqual({
-        type: 'ADD_EXPENSE',
-        expense: {
-            description: '',
-            note: '',
-            amount: 0,
-            createdAt: 0,
-            id: expect.any(String)
-        }
-    })
+test('should add expense to database and store', () => {
+    
 });
+
+test('should add expense with defaults to database and store', () => {
+
+});
+
+// test('should set up the add expense object with default values', () => {
+//     const addAction = addExpense();
+//     expect(addAction).toEqual({
+//         type: 'ADD_EXPENSE',
+//         expense: {
+//             description: '',
+//             note: '',
+//             amount: 0,
+//             createdAt: 0,
+//             id: expect.any(String)
+//         }
+//     })
+// });
 
 
 test('should set up edit expense action object', () => {
