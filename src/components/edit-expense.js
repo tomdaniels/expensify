@@ -1,17 +1,33 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import Modal from 'react-modal';
 import ExpenseForm from './expense-form';
 import { startEditExpenses, startRemoveExpense } from '../actions/expenses';
 
 export class EditExpensePage extends React.Component {
+    state = {
+      removeClick: false
+    };
     onSubmit = (expense) => {
         this.props.startEditExpenses(this.props.expense.id, expense);
         this.props.history.push('/');
     };
 
     onRemove = () => {
+        this.setState((prevState) => ({
+            removeClick: !prevState.removeClick,
+        }));
+    };
+
+    handleRemoveConfirm = () => {
         this.props.startRemoveExpense({id: this.props.expense.id});
         this.props.history.push('/');
+    };
+
+    handleRemoveCancel = () => {
+        this.setState((prevState) => ({
+            removeClick: !prevState.removeClick,
+        }));
     };
 
     render() {
@@ -28,6 +44,20 @@ export class EditExpensePage extends React.Component {
                         onSubmit={this.onSubmit}
                     />
                     <button className="button button--secondary" onClick={this.onRemove}>Remove Expense</button>
+                    <Modal
+                        isOpen={this.state.removeClick}
+                        onRequestClose={this.handleRemoveCancel}
+                        contentLabel="Confirm remove"
+                        closeTimeoutMS={200}
+                        className="modal"
+                        ariaHideApp={false}
+                    >
+                        <p className="modal__title">Are you sure you want to remove this expense?</p>
+                        <div className="modal__button-wrap">
+                            <button className="button button--link" onClick={this.handleRemoveConfirm}>Yes</button>
+                            <button className="button button--link" onClick={this.handleRemoveCancel}>No</button>
+                        </div>
+                    </Modal>
                 </div>
             </div>
         );
