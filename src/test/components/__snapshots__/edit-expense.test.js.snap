@@ -36,6 +36,43 @@ exports[`should render the edit expense page correctly 1`] = `
     >
       Remove Expense
     </button>
+    <Modal
+      ariaHideApp={false}
+      bodyOpenClassName="ReactModal__Body--open"
+      className="modal"
+      closeTimeoutMS={200}
+      contentLabel="Confirm remove"
+      isOpen={false}
+      onRequestClose={[Function]}
+      parentSelector={[Function]}
+      portalClassName="ReactModalPortal"
+      shouldCloseOnEsc={true}
+      shouldCloseOnOverlayClick={true}
+      shouldFocusAfterRender={true}
+      shouldReturnFocusAfterClose={true}
+    >
+      <p
+        className="modal__title"
+      >
+        Are you sure you want to remove this expense?
+      </p>
+      <div
+        className="modal__button-wrap"
+      >
+        <button
+          className="button button--link"
+          onClick={[Function]}
+        >
+          Yes
+        </button>
+        <button
+          className="button button--link"
+          onClick={[Function]}
+        >
+          No
+        </button>
+      </div>
+    </Modal>
   </div>
 </div>
 `;
