@@ -11,3 +11,15 @@
   margin: 0 0 $size-med 0;
   font-style: italic;
 }
+
+input[type=checkbox] {
+  transform: scale(1.5);
+  width: 40px;
+}
+
+.list-item__recurring-icon {
+  margin-right: 5px;
+  &:hover {
+
+  }
+}

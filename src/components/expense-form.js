@@ -104,11 +104,6 @@ class ExpenseForm extends React.Component {
                   placeholder="Amount"
                   onChange={this.onAmountChange}
               />
-              <input
-                  type="checkbox"
-                  selected="selected"
-                  onClick={this.toggleRecurring}
-              />
               <SingleDatePicker
                   date={this.state.createdAt}
                   onDateChange={this.onDateChange}
@@ -118,6 +113,14 @@ class ExpenseForm extends React.Component {
                   isOutsideRange={() => false}
                   block
               />
+              <div>
+                  <input
+                      type="checkbox"
+                      checked={this.state.isRecurring}
+                      onChange={this.toggleRecurring}
+                  />
+                  <label>Recurring Expense?</label>
+              </div>
               <textarea
                   className="text-area"
                   value={this.state.note}
