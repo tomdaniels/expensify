@@ -11,6 +11,7 @@ class ExpenseForm extends React.Component {
             note: props.expense ? props.expense.note : '',
             amount: props.expense ? (props.expense.amount / 100).toString() : '',
             createdAt: props.expense ? moment(props.expense.createdAt) : moment(),
+            isRecurring: props.expense ? props.expense.isRecurring : false,
             calendarFocused: false,
             errorState: ''
         }
@@ -54,6 +55,12 @@ class ExpenseForm extends React.Component {
         }));
     };
 
+    toggleRecurring = () => {
+        this.setState((prevState) => ({
+            isRecurring: !prevState.isRecurring,
+        }));
+    };
+
     onSubmit = (event) => {
         event.preventDefault();
 
@@ -69,7 +76,8 @@ class ExpenseForm extends React.Component {
                 description: this.state.description,
                 amount: parseFloat(this.state.amount) * 100,
                 createdAt: this.state.createdAt.valueOf(),
-                note: this.state.note
+                note: this.state.note,
+                isRecurring: this.state.isRecurring,
             });
         }
     };
@@ -95,6 +103,11 @@ class ExpenseForm extends React.Component {
                   type="text"
                   placeholder="Amount"
                   onChange={this.onAmountChange}
+              />
+              <input
+                  type="checkbox"
+                  selected="selected"
+                  onClick={this.toggleRecurring}
               />
               <SingleDatePicker
                   date={this.state.createdAt}
